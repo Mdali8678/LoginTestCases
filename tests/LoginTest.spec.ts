@@ -24,5 +24,11 @@ test.describe("Login Test case all Scenario",()=>{
         await expect(loggedinpage.text).toHaveText("Congratulations student. You successfully logged in!")
         await loggedinpage.userLogout()
     })
+
+    test("Test case 2: Negative username test",async ()=>{
+        await loginpage.userLogin('student','Password123')
+        console.log(await loginpage.errorMsg.textContent())
+        await expect(loginpage.errorMsg).toHaveText("Your username is invalid!")
+    })
     
 })
