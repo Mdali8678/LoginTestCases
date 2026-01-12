@@ -7,7 +7,7 @@ let loggedinpage:LoggedInPage
 let loginpage:LoginPage
 
 test.describe("Login Test case all Scenario",()=>{
-    test.beforeAll("Launch URL",async ({browser})=>{
+    test.beforeEach("Launch URL",async ({browser})=>{
         const context = await browser.newContext()
         page = await context.newPage()
 
@@ -26,7 +26,7 @@ test.describe("Login Test case all Scenario",()=>{
     })
 
     test("Test case 2: Negative username test",async ()=>{
-        await loginpage.userLogin('student','Password123')
+        await loginpage.userLogin('students','Password123')
         console.log(await loginpage.errorMsg.textContent())
         await expect(loginpage.errorMsg).toHaveText("Your username is invalid!")
     })
