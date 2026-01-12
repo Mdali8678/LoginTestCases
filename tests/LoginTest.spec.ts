@@ -36,5 +36,14 @@ test.describe("Login Test case all Scenario",()=>{
         console.log(await loginpage.errorMsg.textContent())
         await expect(loginpage.errorMsg).toHaveText("Your password is invalid!")
     })
+
+    test("To test weather POLL SCM is working",async ()=>{
+        await loginpage.userLogin('student','Password123')
+        console.log(await loggedinpage.headline.textContent())
+        await expect(loggedinpage.headline).toHaveText("Logged In Successfully")
+        await expect(loggedinpage.text).toHaveText("Congratulations student. You successfully logged in!")
+        await loggedinpage.userLogout()
+    })
+
     
 })
